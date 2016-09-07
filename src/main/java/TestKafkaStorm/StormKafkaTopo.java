@@ -18,7 +18,7 @@ import backtype.storm.utils.Utils;
 public class StormKafkaTopo {   
     public static void main(String[] args) throws Exception { 
         // 配置Zookeeper地址
-        BrokerHosts brokerHosts = new ZkHosts("192.168.44.135:2181,192.168.44.129:2181");//,192.168.44.129:2181
+        BrokerHosts brokerHosts = new ZkHosts("192.168.44.135:2181,192.168.44.129:2181,192.168.44.137:2181");//,192.168.44.129:2181
         // 配置Kafka订阅的Topic，以及zookeeper中数据节点目录和名字
         SpoutConfig spoutConfig = new SpoutConfig(brokerHosts, "test", "/kafka" , "kafkaspout");
        
@@ -26,7 +26,7 @@ public class StormKafkaTopo {
         Config conf = new Config();  
         Map<String, String> map = new HashMap<String, String>(); 
        // 配置Kafka broker地址       
-        map.put("metadata.broker.list", "192.168.44.135:9092");
+        map.put("metadata.broker.list", "192.168.44.135:9092,192.168.44.129:9092,192.168.44.137:9092");
         // serializer.class为消息的序列化类
         map.put("serializer.class", "kafka.serializer.StringEncoder");
         
