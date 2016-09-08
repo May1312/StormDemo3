@@ -1,4 +1,4 @@
-package TestKafkaStorm;
+package com.helian.TestKafkaStorm;
 
 import java.io.UnsupportedEncodingException;
 import java.nio.ByteBuffer;
