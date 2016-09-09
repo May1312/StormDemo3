@@ -1,16 +1,10 @@
 package com.helian.TestKafkaStorm;
 
-import java.io.IOException;
-import java.net.URISyntaxException;
 import java.util.HashMap;
 import java.util.Map;
-
-import org.apache.http.client.ClientProtocolException;
-
 import com.alibaba.fastjson.JSON;
 import com.helian.api.HttpClientUtils;
-import com.helian.spring.bean.User;
-
+import com.helian.bean.User;
 import backtype.storm.topology.BasicOutputCollector;
 import backtype.storm.topology.OutputFieldsDeclarer;
 import backtype.storm.topology.base.BaseBasicBolt;
@@ -34,7 +28,7 @@ public class SenqueceBolt extends BaseBasicBolt{
          //讲数据保存到数据库中
         // springService.insertUser(user);
          //url
-         String url = "http://localhost:8081/TestAnnotation/hang/user";
+         String url = "http://192.168.44.135:7777/TestAnnotation/hang/user";
          Map<String,Object> map = new HashMap<String,Object>();
          map.put("user", word);
          try {

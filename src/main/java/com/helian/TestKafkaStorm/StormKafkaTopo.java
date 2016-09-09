@@ -35,7 +35,7 @@ public class StormKafkaTopo {
         conf.put("kafka.broker.properties", map);
         // 配置KafkaBolt生成的topic
         conf.put("topic", "topic2");
-        
+        conf.setDebug(true);
         spoutConfig.scheme = new SchemeAsMultiScheme(new MessageScheme());  
         TopologyBuilder builder = new TopologyBuilder();   
         builder.setSpout("spout", new KafkaSpout(spoutConfig));  
@@ -43,10 +43,11 @@ public class StormKafkaTopo {
         builder.setBolt("kafkabolt", new KafkaBolt<String, Integer>()).shuffleGrouping("bolt");        
 
         if (args != null && args.length > 0) {  
+        	//集群
             conf.setNumWorkers(3);  
             StormSubmitter.submitTopology(args[0], conf, builder.createTopology());  
         } else {  
-  
+        	//本地
             LocalCluster cluster = new LocalCluster();  
             cluster.submitTopology("Topo", conf, builder.createTopology());  
             Utils.sleep(100000);  
