@@ -21,7 +21,7 @@ public class SenqueceBolt extends BaseBasicBolt{
 	
 	
 	public void execute(Tuple input, BasicOutputCollector collector) {
-        // TODO Auto-generated method stub
+		
          String word = (String) input.getValue(0);  
          //json字符串转json对象
          User user = JSON.parseObject(word, User.class);
